@@ -144,6 +144,11 @@ return [
         'App\Providers\EventServiceProvider',
         'App\Providers\RouteServiceProvider',
 
+        /*
+         * Third Party Package Service Providers...
+         */
+        'Collective\Html\HtmlServiceProvider',
+
     ],
 
     /*
@@ -191,6 +196,12 @@ return [
         'URL'       => 'Illuminate\Support\Facades\URL',
         'Validator' => 'Illuminate\Support\Facades\Validator',
         'View'      => 'Illuminate\Support\Facades\View',
+
+        /*
+         * Third Party Package Aliases
+         */
+        'Form' => 'Collective\Html\FormFacade',
+        'Html' => 'Collective\Html\HtmlFacade',
 
     ],
 
