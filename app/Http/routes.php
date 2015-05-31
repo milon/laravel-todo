@@ -15,3 +15,6 @@ Route::get('/', 'AuthController@home');
 
 Route::get('/login', 'AuthController@getLogin');
 Route::post('/login', 'AuthController@postLogin');
+
+
+Route::resource('user', 'UserController');

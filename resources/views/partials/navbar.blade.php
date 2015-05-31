@@ -14,8 +14,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url('/user/create') }}">Register</a></li>
                 <li><a href="{{ url('/login') }}">Sign In</a></li>
-
             </ul>
         </div><!-- /.navbar-collapse -->
 
