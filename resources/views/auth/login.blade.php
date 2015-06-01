@@ -35,9 +35,6 @@
                 {!! Form::label('remember', 'Remember me', [] ) !!}
                 {!! Form::checkbox('remember', 1, null, ['class' => 'pull-left remember']) !!}
             </div>
-            <div class="col-sm-3 text-right">
-                <a href="{{ url('password/remind') }}">Forget your password?</a>
-            </div>
         </div>
 
         <!-- Log In! Field -->
