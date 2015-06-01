@@ -5,6 +5,8 @@
         <h1>Welcome to Laravel ToDo App</h1>
         <hr/>
 
+        @include('partials.flash_notification')
+
         <p>For any query please contact</p>
 
         <h3>Nuruzzaman Milon</h3>

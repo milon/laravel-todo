@@ -5,3 +5,7 @@ body {
 #remember{
     margin-right: 7px;
 }
+
+.form-inline{
+    display: inline-block;
+}

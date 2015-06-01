@@ -2,24 +2,22 @@
 
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * Constructor method
      */
-    public function index()
-    {
-        //
+    public function __construct(){
+        $this->middleware('auth', ['only' => ['edit', 'update']]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show User Registration Form
      *
-     * @return Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -27,56 +25,60 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Register User
      *
-     * @return Response
+     * @param UserRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(UserRequest $request)
     {
-        dd($request->all());
+        User::create([
+            'name'      => $request->get('name'),
+            'email'     => $request->get('email'),
+            'password'  => bcrypt($request->get('password'))
+        ]);
+
+        return redirect('login')
+            ->with('flash_notification.message', 'User registered successfully')
+            ->with('flash_notification.level', 'success');
     }
 
     /**
-     * Display the specified resource.
+     * Show User Profile
      *
-     * @param  int  $id
-     * @return Response
+     * @param User $user
+     * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function edit(User $user)
     {
-        //
+        return view('users.profile', compact('user'));
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Update User Profile
      *
-     * @param  int  $id
-     * @return Response
+     * @param User $user
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function edit($id)
+    public function update(User $user, Request $request)
     {
-        //
+        $this->validate($request, [
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'password'  => 'confirmed'
+        ]);
+
+        $user->name     = $request->get('name');
+        $user->email    = $request->get('email');
+        if($request->get('password') !== ''){
+            $user->password = $request->get('password');
+        }
+        $user->save();
+
+        return redirect('/todo')
+            ->with('flash_notification.message', 'Profile updated successfully')
+            ->with('flash_notification.level', 'success');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
