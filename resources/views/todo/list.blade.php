@@ -41,6 +41,9 @@
                 </tbody>
             </table>
         </div>
+        <div class="text-center">
+            {!! $todoList->render() !!}
+        </div>
     @else
         <div class="text-center">
             <h3>No todos available yet</h3>
