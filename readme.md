@@ -26,7 +26,7 @@ Then create a environment file using this command-
 cp .env.exapmle .env
 ```
 
-Then edit `.env` file with appropriate credential for your database server. Just edit these two parameter(`DB_USERNAME`, `DB_PASSWORD`). 
+Then edit `.env` file with appropriate credential for your database server. Just edit these two parameter(`DB_USERNAME`, `DB_PASSWORD`).
 
 Then create a database named `todos` and then do a database migration using this command-
 ```
@@ -50,3 +50,12 @@ Then go to `http://localhost:8000` from your browser and see the app.
 ## Ask a question?
 
 If you have any query please contact at milon521@gmail.com
+
+## Screenshot
+
+![Langing Page](/screenshots/1.png)
+![Sign In Page](/screenshots/2.png)
+![Registration Page](/screenshots/3.png)
+![ToDo List Page](/screenshots/4.png)
+![Create New ToDo Page](/screenshots/5.png)
+![User Profile Page](/screenshots/6.png)
