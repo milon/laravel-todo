@@ -53,7 +53,7 @@ If you have any query please contact at milon521@gmail.com
 
 ## Screenshot
 
-![Langing Page](/screenshots/1.png)
+![Landing Page](/screenshots/1.png)
 ![Sign In Page](/screenshots/2.png)
 ![Registration Page](/screenshots/3.png)
 ![ToDo List Page](/screenshots/4.png)
