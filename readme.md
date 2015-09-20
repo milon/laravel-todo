@@ -23,7 +23,7 @@ composer update
 
 Then create a environment file using this command-
 ```
-cp .env.exapmle .env
+cp .env.example .env
 ```
 
 Then edit `.env` file with appropriate credential for your database server. Just edit these two parameter(`DB_USERNAME`, `DB_PASSWORD`).
