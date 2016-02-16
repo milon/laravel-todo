@@ -16,9 +16,9 @@ Then cd into the folder with this command-
 cd laravel-todo
 ```
 
-Then do a composer update
+Then do a composer install
 ```
-composer update
+composer install
 ```
 
 Then create a environment file using this command-
@@ -36,6 +36,11 @@ php artisan migrate
 Then change permission of storage folder using thins command-
 ```
 (sudo) chmod 777 -R storage
+```
+
+At last generate application key, which will be used for password hashing, session and cookie encryption etc.
+```
+php artisan key:generate
 ```
 
 ## Run server
