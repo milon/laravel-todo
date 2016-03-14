@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,13 +16,13 @@ class Todo extends Model
      */
     protected $fillable = [
         'name',
-        'user_id'
+        'user_id',
     ];
 
     /*
      * Eloquent attribute casting
      */
     protected $casts = [
-        'complete' => 'boolean'
+        'complete' => 'boolean',
     ];
 }

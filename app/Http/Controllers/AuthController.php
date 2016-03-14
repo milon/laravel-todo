@@ -1,40 +1,45 @@
-<?php namespace App\Http\Controllers;
+<?php
+
+namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
     /**
-     * View Home Page
+     * View Home Page.
      *
      * @return \Illuminate\View\View
      */
-    public function home(){
+    public function home()
+    {
         return view('home');
     }
 
     /**
-     * Show Login Form
+     * Show Login Form.
      *
      * @return \Illuminate\View\View
      */
-    public function getLogin(){
+    public function getLogin()
+    {
         return view('auth.login');
     }
 
     /**
-     * Do Login
+     * Do Login.
      *
      * @param LoginRequest $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postLogin(LoginRequest $request){
-        if(Auth::attempt([
-            'email' => $request->get('email'),
-            'password' => $request->get('password')
-        ], $request->get('remember'))){
+    public function postLogin(LoginRequest $request)
+    {
+        if (Auth::attempt([
+            'email'    => $request->get('email'),
+            'password' => $request->get('password'),
+        ], $request->get('remember'))) {
             return redirect()
                 ->intended('/todo')
                 ->with('flash_notification.message', 'Logged in successfully')
@@ -49,16 +54,16 @@ class AuthController extends Controller
     }
 
     /**
-     * Logout
+     * Logout.
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
 
         return redirect('/')
             ->with('flash_notification.message', 'Logged out successfully')
             ->with('flash_notification.level', 'success');
     }
-
 }

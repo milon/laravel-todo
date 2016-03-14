@@ -1,7 +1,7 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
+
 use App\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,18 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class TodoController extends Controller
 {
     /**
-     * View ToDos listing
+     * View ToDos listing.
      *
      * @return \Illuminate\View\View
      */
     public function index()
     {
-        $todoList = Todo::where('user_id', Auth::user()->id)->paginate(7);
+        $todoList = Todo::where('user_id', Auth::id())->paginate(7);
+
         return view('todo.list', compact('todoList'));
     }
 
     /**
-     * View Create Form
+     * View Create Form.
      *
      * @return \Illuminate\View\View
      */
@@ -30,9 +31,10 @@ class TodoController extends Controller
     }
 
     /**
-     * Create new Todo
+     * Create new Todo.
      *
      * @param Request $request
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
@@ -40,8 +42,8 @@ class TodoController extends Controller
         $this->validate($request, ['name' => 'required']);
 
         Todo::create([
-            'name'      => $request->get('name'),
-            'user_id'   => Auth::user()->id
+            'name' => $request->get('name'),
+            'user_id' => Auth::user()->id,
         ]);
 
         return redirect('/todo')
@@ -50,15 +52,16 @@ class TodoController extends Controller
     }
 
     /**
-     * Toggle Status
+     * Toggle Status.
      *
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function update($id)
     {
         $todo = Todo::findOrFail($id);
-        $todo->complete = ! $todo->complete;
+        $todo->complete = !$todo->complete;
         $todo->save();
 
         return redirect()
@@ -68,9 +71,10 @@ class TodoController extends Controller
     }
 
     /**
-     * Delete Todo
+     * Delete Todo.
      *
      * @param $id
+     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy($id)

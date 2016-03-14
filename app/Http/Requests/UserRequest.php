@@ -1,6 +1,6 @@
-<?php namespace App\Http\Requests;
+<?php
 
-use App\Http\Requests\Request;
+namespace App\Http\Requests;
 
 class UserRequest extends Request
 {
@@ -22,9 +22,9 @@ class UserRequest extends Request
     public function rules()
     {
         return [
-            'name'      => 'required',
-            'email'     => 'required|email',
-            'password'  => 'required|confirmed'
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed',
         ];
     }
 }
