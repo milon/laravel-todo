@@ -44,7 +44,7 @@ class TodoTest extends TestCase
             ->press('Create Button')
             ->seePageIs('/todo')
             ->see('New todo created successfully')
-            ->see('A New Todo');
+            ->seeInDatabase('todos', ['name' => 'A New Todo']);
     }
 
 }
